@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs app</title>
+    <style>
+        .loading{
+            display: none;
+        }
+        .content{
+            padding: 30px;
+            background-color: whitesmoke;
+            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.479);
+            border-radius: 30px;
+            width: fit-content;
+            
+        }
+    </style>
+    <script src="./assets/vue.js"></script>
+</head>
+<body>
+    <div id="app" style="text-align : center;">
+        <center>
+            <div id="content" class="content">
+                <img :src="cat[0].picture.large" style="border-radius: 50%;" alt="">
+                <h1 v-if="cat[0].gender === 'male'" style="color: blue;">{{ cat[0].name.title }} {{ cat[0].name.first }}</h1>
+                <h1 v-else="cat[0].gender === 'female'" style="color: red;">{{ cat[0].name.title }} {{ cat[0].name.first }}</h1>
+                <span style="background-color: rgb(3, 3, 3); padding: 8px; border-radius: 5px; color: white;">From {{ cat[0].location.country }}</span>
+                <p>{{ cat[0].email}}</p>
+                <button @click="show()" v-if="cat[0].gender === 'male'" style="background-color: rgb(75, 101, 247); color: white; border-radius: 30px; size: 50px; padding: 15px; border-style: none;">Random User</button>
+                <button @click="show()" v-else="cat[0].gender === 'female'" style="background-color: rgb(247, 75, 104); color: white; border-radius: 30px; size: 50px; padding: 15px; border-style: none;">Random User</button>
+            </div>
+            <div id="loader" class="loading content">
+                <h2>loading...</h2>
+            </div>
+        </center>
+        
+        
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/jquery-3.6.0.min.js"></script>
+    <script src="./myvue.js"></script>
+</body>
+</html>
